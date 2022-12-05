@@ -45,8 +45,6 @@ def day03_part2(input_name):
                 total += numeric_value(item)
 
 
-
-
 if __name__ == '__main__':
     result = day03_part2("input_day03.txt")
     print(f"The final result is {result}")
