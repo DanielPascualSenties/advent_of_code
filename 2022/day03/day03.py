@@ -15,7 +15,7 @@ def split_string_half(bag):
 
 def find_coincidences(small_bag, big_bag):
     small_bag_list = list(small_bag)
-    big_bag_list= list(big_bag)
+    big_bag_list = list(big_bag)
     return set(small_bag_list).intersection(big_bag_list)
 
 
@@ -48,6 +48,3 @@ def day03_part2(input_name):
 if __name__ == '__main__':
     result = day03_part2("input_day03.txt")
     print(f"The final result is {result}")
-
-
-
