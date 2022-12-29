@@ -25,3 +25,4 @@ class TestDay04(unittest.TestCase):
         self.assertEqual(True, check_strict_overlapping((1, 5), (1, 5)))
         self.assertEqual(False, check_strict_overlapping((1, 5), (6, 10)))
         self.assertEqual(True, check_strict_overlapping((1, 6), (5, 10)))
+
