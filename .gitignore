@@ -127,3 +127,23 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/2022/day08/day08_input.txt
+/2022/day09/day09_input.txt
+/2022/day05/day05_input.txt
+/2022/day06/day06_input.txt
+/.idea/vcs.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/2022/day07/sandbox.py
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/modules.xml
+/.idea/misc.xml
+/2022/day04/input_day04.txt
+/2022/day03/input_day03.txt
+/.idea/.gitignore
+/.idea/advent_of_code.iml
+/2022/day07/day07_input.txt
+/2022/day01/input_day01.txt
+/2022/day02/input_day02.txt
+/2022/day10/day10_input.txt
+/2022/day11/day11_input.txt
+/2022/day12/day12_input.txt
