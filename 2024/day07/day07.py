@@ -18,8 +18,7 @@ def evaluate_part_2(equation):
             new_values.append(int(elem) + int(clean))
             new_values.append(int(elem) * int(clean))
             new_values.append(int(str(elem)+str(clean)))
-        possible_results = new_values
-    print(possible_results)
+        possible_results = list(set(new_values))
     if target in possible_results:
         print(f"Match! {target} in {possible_results}")
         return target
@@ -28,17 +27,14 @@ def evaluate_part_2(equation):
 
 def evaluate(equation):
     elements = equation.split(" ")
-    print(elements)
     target = int(elements[0].replace(":", ""))
     possible_results = [int(elements[1])]
-    print(possible_results)
     for i in elements[2:]:
         new_values = []
         for elem in possible_results:
             new_values.append(int(i) + int(elem))
             new_values.append(int(i) * int(elem))
         possible_results = new_values
-    print(possible_results)
     if target in possible_results:
         print(f"Match! {target} in {possible_results}")
         return target
@@ -50,7 +46,6 @@ def day_07(input_name):
     total = 0
     for equation in equations:
         total += evaluate(equation)
-        print(equation)
     return total
 
 
@@ -59,7 +54,6 @@ def day_07_part_2(input_name):
     total = 0
     for equation in equations:
         total += evaluate_part_2(equation)
-        print(equation)
     return total
 
 
