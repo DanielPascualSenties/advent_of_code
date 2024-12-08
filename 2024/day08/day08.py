@@ -48,6 +48,7 @@ def get_antinodes_for_pair_of_antennas(pair, antinodes):
         antinodes.add(antinode_2)
     return antinodes
 
+
 def get_antinodes_for_pair_of_antennas_part_2(pair, antinodes):
     print(pair)
     first = pair[0]
