@@ -144,11 +144,36 @@ def day_12(input_name):
 
 
 def day_12_part_2(input_name):
+    garden = ingest_message(input_name=input_name)
+    print("Garden")
+    print(garden)
+    regions = tag_regions(garden)
+    print("Regions")
+    print(regions)
+    perimeters = get_perimeters(garden)
+    print("Perimeters")
+    print(perimeters)
+    region_areas = dict()
+    for row in range(len(regions)):
+        for column in range(len(regions[row])):
+            elem = regions[row][column]
+            region_areas[elem] = region_areas.get(elem, 0) + 1
+    print("Region areas")
+    print(region_areas)
+    cost = dict()
+    for row in range(len(garden)):
+        for column in range(len(garden[row])):
+            elem = regions[row][column]
+            cost[elem] = cost.get(elem, 0) + perimeters[row][column] * region_areas[elem]
+    print("Cost")
+    print(cost)
     total = 0
+    for key in cost:
+        total += cost[key]
     return total
 
 
 if __name__ == '__main__':
     print("Running main")
-    result = day_12(input_name="day12_input.txt")
+    result = day_12_part_2(input_name="day12_input.txt")
     print(result)
