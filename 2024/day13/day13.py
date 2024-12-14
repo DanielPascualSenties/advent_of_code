@@ -6,9 +6,10 @@ def ingest_message(input_name):
     with open(input_name, encoding='utf8') as file:
         lines = file.readlines()
         for line in range(len(lines)):
-            lines[line]=lines[line].replace("\n", "")
+            lines[line] = lines[line].replace("\n", "")
 
     return lines
+
 
 def format_tokens(button_a, button_b, prize):
     button_a_x = int(button_a.split(" ")[2][2:4])
@@ -34,10 +35,8 @@ def calculate_tokens_nr(button_a_x, button_a_y, button_b_x, button_b_y, prize_x,
                 print(f"Found a solution with button a clicked {a} times and button b clicked {b} times")
                 solutions.append(3 * a + b)
     print(solutions)
-    if solutions == []:
+    if not solutions:
         return 0
-    if len(solutions)>1:
-        print("Found multiple solutions")
     result = min(solutions)
     return result
 
@@ -47,9 +46,9 @@ def day_13(input_name):
     lines = ingest_message(input_name)
     arcades = len(lines) // 4
     for i in range(arcades):
-        button_a = lines[i*4]
-        button_b = lines[i*4 + 1]
-        prize = lines[i*4 + 2]
+        button_a = lines[i * 4]
+        button_b = lines[i * 4 + 1]
+        prize = lines[i * 4 + 2]
         button_a_x, button_a_y, button_b_x, button_b_y, prize_x, prize_y = format_tokens(button_a, button_b, prize)
         min_tokens = calculate_tokens_nr(button_a_x, button_a_y, button_b_x, button_b_y, prize_x, prize_y)
         total += min_tokens
@@ -64,5 +63,5 @@ def day_13_part_2(input_name):
 
 if __name__ == '__main__':
     print("Running main")
-    result = day_13(input_name="day13_example_2.txt")
+    result = day_13(input_name="day13_input.txt")
     print(result)
