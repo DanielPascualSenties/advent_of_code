@@ -45,40 +45,6 @@ def tag_regions(garden):
     return regions
 
 
-def tag_regions_old(garden):
-    regions = [["." for i in range(SIZE)] for j in range(SIZE)]
-
-    counter = 0
-    for row in range(len(garden)):
-        for column in range(len(garden[row])):
-            elem = garden[row][column]
-            if row < 1 and column < 1:
-                regions[row][column] = str(counter)
-                counter += 1
-            elif column < 1:
-                if garden[row - 1][column] == elem:
-                    regions[row][column] = regions[row - 1][column]
-                else:
-                    regions[row][column] = str(counter)
-                    counter += 1
-            elif row < 1:
-                if garden[row][column - 1] == elem:
-                    regions[row][column] = regions[row][column - 1]
-                else:
-                    regions[row][column] = str(counter)
-                    counter += 1
-            else:
-                if garden[row - 1][column] == elem:
-                    regions[row][column] = regions[row - 1][column]
-                elif garden[row][column - 1] == elem:
-                    regions[row][column] = regions[row][column - 1]
-                else:
-                    regions[row][column] = str(counter)
-                    counter += 1
-
-    return regions
-
-
 def get_perimeter(garden, row, column):
     elem = garden[row][column]
     perimeter = 0
@@ -112,35 +78,6 @@ def get_perimeters(garden):
             perimeters[row][column] = get_perimeter(garden, row, column)
     return perimeters
 
-
-def day_12(input_name):
-    garden = ingest_message(input_name=input_name)
-    print("Garden")
-    print(garden)
-    regions = tag_regions(garden)
-    print("Regions")
-    print(regions)
-    perimeters = get_perimeters(garden)
-    print("Perimeters")
-    print(perimeters)
-    region_areas = dict()
-    for row in range(len(regions)):
-        for column in range(len(regions[row])):
-            elem = regions[row][column]
-            region_areas[elem] = region_areas.get(elem, 0) + 1
-    print("Region areas")
-    print(region_areas)
-    cost = dict()
-    for row in range(len(garden)):
-        for column in range(len(garden[row])):
-            elem = regions[row][column]
-            cost[elem] = cost.get(elem, 0) + perimeters[row][column] * region_areas[elem]
-    print("Cost")
-    print(cost)
-    total = 0
-    for key in cost:
-        total += cost[key]
-    return total
 
 
 def day_12_part_2(input_name):

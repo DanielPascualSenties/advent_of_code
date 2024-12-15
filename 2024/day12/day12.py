@@ -45,39 +45,6 @@ def tag_regions(garden):
     return regions
 
 
-def tag_regions_old(garden):
-    regions = [["." for i in range(SIZE)] for j in range(SIZE)]
-
-    counter = 0
-    for row in range(len(garden)):
-        for column in range(len(garden[row])):
-            elem = garden[row][column]
-            if row < 1 and column < 1:
-                regions[row][column] = str(counter)
-                counter += 1
-            elif column < 1:
-                if garden[row - 1][column] == elem:
-                    regions[row][column] = regions[row - 1][column]
-                else:
-                    regions[row][column] = str(counter)
-                    counter += 1
-            elif row < 1:
-                if garden[row][column - 1] == elem:
-                    regions[row][column] = regions[row][column - 1]
-                else:
-                    regions[row][column] = str(counter)
-                    counter += 1
-            else:
-                if garden[row - 1][column] == elem:
-                    regions[row][column] = regions[row - 1][column]
-                elif garden[row][column - 1] == elem:
-                    regions[row][column] = regions[row][column - 1]
-                else:
-                    regions[row][column] = str(counter)
-                    counter += 1
-
-    return regions
-
 
 def get_perimeter(garden, row, column):
     elem = garden[row][column]
