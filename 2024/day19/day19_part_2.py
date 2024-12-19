@@ -1,3 +1,5 @@
+#Found 79701802 ways to build towel ruurbrwgrurubwrurugubgurgruurwgugwgrwuwbrww
+cached_results = {}
 def ingest_towels(input_name):
     """
     :param input_name: name of the input file
@@ -16,40 +18,40 @@ def ingest_towels(input_name):
 
 def can_make(towel, available_towels):
     if len(towel) == 0:
-        return True
-    can_be_made = False
+        return 1
+    elif towel in cached_results:
+        return cached_results[towel]
     initial = towel[0]
     relevant_towels = [x for x in available_towels if x.startswith(initial)]
+    count = 0
     for available_towel in relevant_towels:
         if towel.startswith(available_towel):
             num_rows = len(available_towel)
             new_towel = towel[num_rows:]
-            print(new_towel)
-            can_be_made = can_make(new_towel, available_towels)
-            if can_be_made:
-                return True
-    return can_be_made
+            posibilities = can_make(new_towel, available_towels)
+            count += posibilities
+            cached_results[new_towel] = posibilities
+
+    return count
 
 def optimize_available_towels(available_towels):
     return available_towels
 
 
 
-def day_19(input_name):
+def day_19_part_2(input_name):
     available_towels, desired_towels = ingest_towels(input_name)
     available_towels = optimize_available_towels(available_towels)
     total = 0
     for towel in desired_towels:
         print(f"Checking {towel}")
-        if can_make(towel, available_towels):
-            print(f"Could find and arrangement for {towel}")
-            total += 1
-        else:
-            print(f"Could not find and arrangement for {towel}")
+        options = can_make(towel, available_towels)
+        print(f"Found {options} ways to build towel {towel}")
+        total += can_make(towel, available_towels)
     return total
 
 
 if __name__ == '__main__':
     print("Running main")
-    result = day_19(input_name="day19_input.txt")
+    result = day_19_part_2(input_name="day19_input.txt")
     print(result)
